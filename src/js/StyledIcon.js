@@ -53,6 +53,7 @@ const IconInner = forwardRef(
 IconInner.displayName = 'Icon';
 
 const parseMetricToNum = (string) => parseFloat(string.match(/\d+(\.\d+)?/), 10);
+const parseUnit = (string) => string.match(/\D+$/) || []
 
 const StyledIcon = styled(IconInner)`
   display: inline-block;
@@ -62,22 +63,23 @@ const StyledIcon = styled(IconInner)`
     const [, , w, h] = (viewBox || '0 0 24 24').split(' ');
     const scale = w / h;
     const dimension = parseMetricToNum(theme.icon.size[size] || size);
+    const unit = parseUnit(theme.icon.size[size] || size).pop() ||"px"
 
     if (w < h) {
       return `
-      width: ${dimension}px;
-      height: ${dimension / scale}px;
+      width: ${dimension}${unit};
+      height: ${dimension / scale}${unit};
     `;
     }
     if (h < w) {
       return `
-      width: ${dimension * scale}px;
-      height: ${dimension}px;
+      width: ${dimension * scale}${unit};
+      height: ${dimension}${unit};
     `;
     }
     return `
-      width: ${dimension}px;
-      height: ${dimension}px;
+      width: ${dimension}${unit};
+      height: ${dimension}${unit};
     `;
   }}
   ${({ color }) => color !== 'plain' && colorCss}
