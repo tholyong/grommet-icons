@@ -2183,10 +2183,6 @@ Object {
     "$$typeof": Symbol(react.forward_ref),
     "render": [Function],
   },
-  "Tictok": Object {
-    "$$typeof": Symbol(react.forward_ref),
-    "render": [Function],
-  },
   "Tiktok": Object {
     "$$typeof": Symbol(react.forward_ref),
     "render": [Function],
