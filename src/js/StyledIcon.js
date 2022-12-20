@@ -63,7 +63,7 @@ const StyledIcon = styled(IconInner)`
     const [, , w, h] = (viewBox || '0 0 24 24').split(' ');
     const scale = w / h;
     const dimension = parseMetricToNum(theme.icon.size[size] || size);
-    const unit = parseUnit(theme.icon.size[size] || size).pop() ||"px"
+    const unit = parseUnit(String(theme.icon.size[size] || size)).pop() || "px"
 
     if (w < h) {
       return `
